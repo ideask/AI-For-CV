@@ -5,11 +5,7 @@ import matplotlib.pyplot as plt
 from sklearn.datasets.samples_generator import make_blobs
 
 # 生成num个二维数据集（二分类），样本中心点[-1,-1], [2,2]
-def gen_sample_data(num):
-    X, y = make_blobs(n_samples=num, n_features=2, centers=[[-1,-1], [2,2]], cluster_std=[0.4, 0.2],
-                  random_state =9)
-    #print(X)
-    return X
+
 
 # 两个向量间欧式距离（L2距离）
 def disCal(vecA, vecB):
@@ -69,7 +65,7 @@ def datashow(dataSet, k, centroids, clusterAssment):  # 二维空间显示聚类
     if dim != 2:
         print('sorry,the dimension of your dataset is not 2!')
         return 1
-    marksamples = ['or', 'ob', 'og', 'ok', '^r', '^b', '<g']  # 样本图形标记
+    marksamples = ['or', 'ob', 'og', 'ok', '^r', '^b', '<g']  # 样本颜色标记
     if k > len(marksamples):
         print('sorry,your k is too large,please add length of the marksample!')
         return 1
@@ -77,12 +73,12 @@ def datashow(dataSet, k, centroids, clusterAssment):  # 二维空间显示聚类
     for i in range(num):
         markindex = int(clusterAssment[i, 0])  # 矩阵形式转为int值, 簇序号
         # 特征维对应坐标轴x,y；样本图形标记及大小
-        plt.plot(dataSet[i, 0], dataSet[i, 1], marksamples[markindex], markersize=2)
+        plt.plot(dataSet[i, 0], dataSet[i, 1], marksamples[markindex], markersize=5)
 
     # 绘中心点
-    markcentroids = ['o', '*', '^']  # 聚类中心图形标记
-    label = ['0', '1', '2']
-    c = ['yellow', 'pink', 'red']
+    markcentroids = ['o', '*', '^', '+', '.', 'x', 's', 'd', '<', '>', 'p', 'h']  # 聚类中心图形标记
+    label = ['0', '1', '2', '3', '4', '5', '6']
+    c = ['yellow', 'pink', 'red', 'g', 'c', 'b', 'k']
     for i in range(k):
         plt.plot(centroids[i, 0], centroids[i, 1], markcentroids[i], markersize=10, label=label[i], c=c[i])
         plt.legend(loc='upper left')
@@ -92,8 +88,8 @@ def datashow(dataSet, k, centroids, clusterAssment):  # 二维空间显示聚类
     plt.show()
 
 if __name__ == '__main__':
-    k = 2
-    data_array = gen_sample_data(100)
+    k = 7;
+    data_array, target = make_blobs(n_samples=100, n_features=2, centers=k, cluster_std=1.0, center_box=(-3.0, 3.0))
     center_points, cul_assign = kMeans(k, data_array)
     datashow(data_array, k, center_points, cul_assign)
 
