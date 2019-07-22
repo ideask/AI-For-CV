@@ -1,0 +1,23 @@
+net: "/home/kenny/Desktop/AI-For-CV/week6_9_TinyProj/tiny_caffe_project/brand_network.prototxt"
+
+test_iter: 2
+test_interval: 100
+
+
+base_lr: 0.0005
+momentum: 0.9
+weight_decay: 0.0005
+lr_policy: "multistep"
+gamma: 0.2
+
+max_iter: 1000
+stepvalue: 500
+#stepvalue: 12000
+
+display: 100
+
+snapshot: 200
+snapshot_prefix: "/home/kenny/Desktop/AI-For-CV/week6_9_TinyProj/tiny_caffe_project/models/"
+
+solver_mode: GPU
+

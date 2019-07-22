@@ -1,0 +1,12 @@
+7.jpg 1
+9.jpg 2
+11.jpg 2
+12.jpg 2
+5.jpg 1
+10.jpg 2
+4.jpg 0
+6.jpg 1
+2.jpg 0
+1.jpg 0
+3.jpg 0
+8.jpg 1
